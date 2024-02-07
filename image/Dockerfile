@@ -5,6 +5,7 @@ FROM public.ecr.aws/lambda/nodejs:18
 # Extension code
 WORKDIR /opt
 COPY --from=Extension /opt/ .
+WORKDIR /var/task
 
 # Copy function code and package.json to the container image
 COPY index.mjs package.json ./
