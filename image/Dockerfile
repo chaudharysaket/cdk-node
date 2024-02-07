@@ -1,13 +1,13 @@
 # Use the official AWS Lambda Node.js runtime as a parent image
 FROM public.ecr.aws/x6n7b2o2/newrelic-lambda-layers-nodejs:18-arm64 AS Extension
-FROM public.ecr.aws/lambda/nodejs:14
+FROM public.ecr.aws/lambda/nodejs:18
 
 # Extension code
 WORKDIR /opt
 COPY --from=Extension /opt/ .
 
 # Copy function code and package.json to the container image
-COPY index.js package.json ${LAMBDA_TASK_ROOT}
+COPY index.mjs package.json ./
 
 # Install NPM dependencies for function
 RUN npm install
