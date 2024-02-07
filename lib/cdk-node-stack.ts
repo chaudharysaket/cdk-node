@@ -9,7 +9,7 @@ export class DockerLambdaAwsStack extends cdk.Stack {
     // Define the Lambda function
     const dockerFunc = new lambda.DockerImageFunction(this, "DockerFunc", {
       code: lambda.DockerImageCode.fromImageAsset( "./image", { 
-        cmd: ['newrelic_lambda_wrapper.handler'] // assign cmd override for image config 
+        cmd: ['newrelic-lambda-wrapper.handler'] // assign cmd override for image config 
       } ), 
       memorySize: 1024, // MB
       timeout: cdk.Duration.seconds(10),
